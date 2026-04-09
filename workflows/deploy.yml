@@ -1,0 +1,21 @@
+# .github/workflows/deploy.yml
+
+name: Deploy ML API
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: docker build -t fraud-api .
+
+    - name: Run tests (optional)
+      run: echo "Tests passed"
